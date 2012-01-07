@@ -8,4 +8,4 @@ in the 8tracks playlist are displayed before starting the conversion. (You can a
 
 NOTE: For this script to work to its full potential, you need to install Yamamaya's script which enable
 unlimited skipping of tracks and fetching of download links in 8tracks.
-Yamamaya's script can be found here: http://userscripts.org/scripts/show/83206
+Yamamaya's script can be found here: http://userscripts.org/scripts/show/122142
