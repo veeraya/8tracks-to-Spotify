@@ -107,7 +107,7 @@ function getLink(title, artist, index, songNode) {
  *return m4a download link if available
  */
 function getDownloadLink(index, songNode) {
-    var dlink = songNode[index].getElementsByTagName("a")[0].href;
+    var dlink = songNode[index].getElementsByTagName("a")[1].href;
     if (dlink.indexOf("amazonaws.com") != -1) {
         return dlink;
     }
