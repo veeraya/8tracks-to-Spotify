@@ -69,6 +69,9 @@ function getLink(title, artist, index, songNode) {
             for (var i = 0; i < response.tracks.length && found == 0; i++) {
                 if (trim(response.tracks[i].artists[0].name.toLowerCase()) == artist.toLowerCase()) {
                     found = 1;
+/*                    alert("found");
+                    alert(artist + title);*/
+
                     i--; //because after for loop, there's the i++ so it won't give us the position of the song anymore!
                 }
             }
@@ -107,6 +110,11 @@ function getLink(title, artist, index, songNode) {
  *return m4a download link if available
  */
 function getDownloadLink(index, songNode) {
+
+    //check if that dom element exist.
+    if (typeof songNode[index].getElementsByTagName("a")[1] === "undefined")
+    return false;
+
     var dlink = songNode[index].getElementsByTagName("a")[1].href;
     if (dlink.indexOf("amazonaws.com") != -1) {
         return dlink;
