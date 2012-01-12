@@ -92,7 +92,7 @@ function getLink(title, artist, index, songNode) {
                     "&submit=Submit";
             else
                 targetFrame.src = "https://spreadsheets.google.com/formResponse?formkey=" + formkey +
-                    "&ifq&entry.0.single=" + encodeURIComponent(title) +
+                    "Q&ifq&entry.0.single=" + encodeURIComponent(title) +
                     "&entry.1.single=" + encodeURIComponent(artist) +
                     "&entry.4.single=" + "not found" +
                     "&entry.5.single=" + encodeURIComponent(downloadLink) +
