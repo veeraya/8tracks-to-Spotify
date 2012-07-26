@@ -3,7 +3,7 @@
 // @namespace      Pook
 // @description    Convert 8tracks playlist to Spotify playlist
 // @include        http://8tracks.com/*/*
-// @version        0.1
+// @version        0.11
 // ==/UserScript==
 
 /*
