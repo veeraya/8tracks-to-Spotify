@@ -69,9 +69,6 @@ function getLink(title, artist, index, songNode) {
             for (var i = 0; i < response.tracks.length && found == 0; i++) {
                 if (trim(response.tracks[i].artists[0].name.toLowerCase()) == artist.toLowerCase()) {
                     found = 1;
-/*                    alert("found");
-                    alert(artist + title);*/
-
                     i--; //because after for loop, there's the i++ so it won't give us the position of the song anymore!
                 }
             }
@@ -89,14 +86,14 @@ function getLink(title, artist, index, songNode) {
                     "&entry.3.single=" + encodeURIComponent(response.tracks[i].artists[0].name) +
                     "&entry.4.single=" + encodeURIComponent(response.tracks[i].href) +
                     "&entry.5.single=" + encodeURIComponent(downloadLink) +
-                    "&submit=Submit";
+                    "&submit=Submit&output=embed";
             else
                 targetFrame.src = "https://spreadsheets.google.com/formResponse?formkey=" + formkey +
                     "Q&ifq&entry.0.single=" + encodeURIComponent(title) +
                     "&entry.1.single=" + encodeURIComponent(artist) +
                     "&entry.4.single=" + "not found" +
                     "&entry.5.single=" + encodeURIComponent(downloadLink) +
-                    "&submit=Submit";
+                    "&submit=Submit&output=embed";
 
             document.body.appendChild(targetFrame);
 
