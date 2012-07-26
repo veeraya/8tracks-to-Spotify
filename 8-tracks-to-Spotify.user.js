@@ -3,7 +3,7 @@
 // @namespace      Pook
 // @description    Convert 8tracks playlist to Spotify playlist
 // @include        http://8tracks.com/*/*
-// @version        0.11
+// @version        0.12
 // ==/UserScript==
 
 /*
@@ -108,15 +108,24 @@ function getLink(title, artist, index, songNode) {
  */
 function getDownloadLink(index, songNode) {
 
+   //Parsing dom from Yamamaha's userscript
     //check if that dom element exist.
-    if (typeof songNode[index].getElementsByTagName("a")[1] === "undefined")
-    return false;
-
-    var dlink = songNode[index].getElementsByTagName("a")[1].href;
-    if (dlink.indexOf("amazonaws.com") != -1) {
-        return dlink;
+    if (typeof songNode[index].getElementsByTagName("a")[1] != "undefined") {
+        var dlink = songNode[index].getElementsByTagName("a")[1].href;
+        if (dlink.indexOf("amazonaws.com") != -1) {
+            return dlink;
+        }
     }
-    else return false;
+
+    //Parsing dom from (Better) 8tracks downloader
+    if (document.getElementById("8trackPlus_songList") != null) {
+        var better8tracksSongNodes = document.getElementById("8trackPlus_songList").getElementsByTagName("DIV");
+        if (typeof better8tracksSongNodes[index] != "undefined" && typeof better8tracksSongNodes[index].getElementsByTagName("A")[1] != "undefined") {
+            return better8tracksSongNodes[index].getElementsByTagName("A")[1].href;
+        }
+    }
+
+    return false;
 }
 
 /*
