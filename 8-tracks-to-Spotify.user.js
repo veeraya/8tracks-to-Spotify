@@ -55,9 +55,9 @@ function parseData(index, songNode) {
  *search for spotify link, download link and record onto google doc via iframe
  */
 function getLink(title, artist, index, songNode) {
-    var url = "http://ws.spotify.com/search/1/track.json?q=";
+    var url = "https://api.spotify.com/v1/search?q=" + encodeURIComponent(title) + "&type=track";
     var http = new XMLHttpRequest();
-    http.open("GET", url + encodeURIComponent(title), true);
+    http.open("GET", url, true);
 
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
@@ -67,7 +67,7 @@ function getLink(title, artist, index, songNode) {
             //search for song with the exact same artist as in json response from Spotify
             var found = 0;
             for (var i = 0; i < response.tracks.length && found == 0; i++) {
-                if (trim(response.tracks[i].artists[0].name.toLowerCase()) == artist.toLowerCase()) {
+                if (trim(response.tracks.items[i].artists[0].name.toLowerCase()) == artist.toLowerCase()) {
                     found = 1;
                     i--; //because after for loop, there's the i++ so it won't give us the position of the song anymore!
                 }
